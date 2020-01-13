@@ -24,6 +24,6 @@ app.delete("/:collection", function (req, res) {
     res.end();
 });
 
-app.listen(9090, () => {
+app.listen(8080, () => {
     console.log('Running...');
 })
