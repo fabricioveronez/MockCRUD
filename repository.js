@@ -19,6 +19,10 @@ exports.get = (collection) => {
     return repo.get(collection);
 };
 
+exports.getById = (collection, id) => {
+    return repo.get(collection).find(x => x.id === id);
+};
+
 exports.clear = (collection) => {
     repo.delete(collection);
 };

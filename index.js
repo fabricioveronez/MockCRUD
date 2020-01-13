@@ -5,20 +5,26 @@ var app = express()
 
 app.use(bodyParser.json())
 
-app.post("/:collection",function (req, res) {
+app.post("/api/:collection",function (req, res) {
     var data = req.body;
     var returnValue = repository.insert(req.params.collection, data);
     res.status = 204;
     res.json(returnValue);
 });
 
-app.get("/:collection",function (req, res) {
+app.get("/api/:collection",function (req, res) {
     
     var returnValue = repository.get(req.params.collection);    
     res.json(returnValue);
 });
 
-app.delete("/:collection", function (req, res) {
+app.get("/api/:collection/:id",function (req, res) {
+    
+    var returnValue = repository.getById(req.params.collection, req.params.id);    
+    res.json(returnValue);
+});
+
+app.delete("/api/:collection", function (req, res) {
     
     repository.clear(req.params.collection);    
     res.end();
